@@ -282,9 +282,9 @@
 					</div>
 					</section>
 					
-					<section>
+					<!-- <section>
 					<h3>Démo Time: classification des chiffres!</h3>
-					</section>
+					</section> -->
 					
 					<section>
 					<h3>Mesure de la performance</h3>
@@ -390,12 +390,14 @@
 					</section>
 
 					<section>
-						<h3>TODO Comparaison des méthodes</h3>
-						<ul>
-						<li>Nombres de paramètres</li>
-						<li>Volumes de calculs</li>
-						<li>Performance</li>
-						</ul>
+						<h3>Comparaison des modèles</h3>
+						<table class="reveal mathblock">
+							<tr><th>Modèle</th><th>Paramètres</th><th>FLOPS</th><th>Performance</th></tr>
+							<tr><td>#1</td><td>30k</td><td>16k</td><td>92%</td></tr>
+							<tr><td>#2</td><td>1.9M</td><td>993k</td><td>97%</td></tr>
+							<tr><td>#3</td><td>3.39M</td><td>1.78M</td><td>98%</td></tr>
+							<tr><td>#4</td><td>3.13M</td><td>16.4M</td><td>99%</td></tr>
+						</table>
 					</section>
 					
 					<section>
@@ -409,8 +411,9 @@
 					<ul>
 					<li>Le coût d'apprentissage devient prohibitif:
 						<ul>
-						<li>en CPU (GoogLeNet: 1.5Gops &rarr; 500ms @3GHz)</li>
+						<li>en CPU (GoogLeNet: 7M params; 1.5Gops &rarr; 500ms @3GHz)</li>
 						<li>en données (1M images &rarr; 5j)</li>
+						<li>Aujourd'hui LLM &rarr; GPT-3 365B params!</li>
 						</ul>
 					</li>
 					<li>Solution: entrainement spécifique des dernières couches sur un réseau pré-entrainé (fine-tuning)</li>
@@ -458,7 +461,7 @@
 					-->
 					
 					<section>
-					<h3>TODO: Les outils</h3>
+					<h3>Les outils</h3>
 					<ul>
 					<li>Services clouds : Google vision, Amazon, etc.</li>
 					<li>Il faut être de la maison serpentard!</li>
@@ -469,7 +472,7 @@
 					</section>
 					
 					<section>
-					<h3>TODO: Conclusion</h3>
+					<h3>Conclusion</h3>
 					<ul>
 					<li>Algorithmes relativement anciens et pas si compliqués</li>
 					<li>Disponibilité d'énormes volumes de données et de CPU &rarr; Essor du DeepLearning</li>
@@ -480,7 +483,7 @@
 					
 					<section>
 					<h2>Question Time?</h2>
-					<p>https://madbrain.github.com/pres-deeplearning/</p>
+					<!-- <p>https://madbrain.github.com/pres-deeplearning/</p> -->
 					</section>
 			</div>
 		</div>
