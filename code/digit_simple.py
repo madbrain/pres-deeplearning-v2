@@ -8,7 +8,7 @@ from keras_flops import get_flops
 
 model = tf.keras.models.Sequential([
   tf.keras.layers.Flatten(input_shape=(28, 28)),
-  #tf.keras.layers.Dense(625, activation='sigmoid'),
+  tf.keras.layers.Dense(625, activation='sigmoid'),
   #tf.keras.layers.Dense(625, activation='relu'),
   #tf.keras.layers.Dropout(0.2),
   tf.keras.layers.Dense(10)
@@ -27,8 +27,8 @@ model = tf.keras.models.Sequential([
 #     tf.keras.layers.Dense(10, activation='softmax')
 # ])
 
-print (get_flops(model, batch_size=1))
-sys.exit(1)
+#print (get_flops(model, batch_size=1))
+#sys.exit(1)
 
 model.compile(
     optimizer=tf.keras.optimizers.Adam(0.001),
@@ -67,3 +67,27 @@ model.fit(
     ds_train,
     epochs=6,
     validation_data=ds_test)
+
+(weights, b) = model.get_layer("dense").get_weights()
+(weights1, b1) = model.get_layer("dense_1").get_weights()
+
+
+w = tf.transpose(weights)
+w1 = tf.transpose(weights1)
+focus_digit = 2
+best_neurons = sorted(list(enumerate(w1[focus_digit].numpy())), key=lambda x: x[1], reverse=True)
+
+from matplotlib import pyplot as plt
+
+#fig = plt.figure(figsize=(15, 7)) # Model 1
+# fig = plt.figure(figsize=(15, 15)) # Model 2
+fig = plt.figure(figsize=(15, 7)) # Model 2.5
+
+for (i, (j, v)) in enumerate(best_neurons[0:10]):
+    img = tf.reshape(w[i], (28, 28))
+    fig.add_subplot(2, 5, i+1)
+    # fig.add_subplot(25, 25, i+1)
+    plt.axis('off')
+    plt.title(str(v))
+    plt.imshow(img, interpolation='nearest')
+plt.show()
